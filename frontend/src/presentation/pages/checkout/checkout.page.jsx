@@ -55,11 +55,9 @@ const CheckoutPage = () => {
     setError(null);
 
     try {
-      // Create Razorpay order on backend
       const response = await paymentApiService.createOrder(finalAmount);
       const { orderId, keyId } = response.data;
 
-      // Open Razorpay checkout modal
       const options = {
         key: keyId,
         amount: Math.round(finalAmount * 100),
@@ -69,7 +67,6 @@ const CheckoutPage = () => {
         order_id: orderId,
         handler: async (paymentResponse) => {
           try {
-            // Verify payment and create order
             await paymentApiService.verifyAndCreateOrder({
               razorpay_order_id: paymentResponse.razorpay_order_id,
               razorpay_payment_id: paymentResponse.razorpay_payment_id,

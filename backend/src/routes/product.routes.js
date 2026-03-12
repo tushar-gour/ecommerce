@@ -22,7 +22,6 @@ router.get("/categories", (req, res, next) =>
   productController.getCategories(req, res, next),
 );
 
-// Vendor product routes (must be before /:id to avoid route collision)
 router.get(
   "/vendor/my-products",
   authenticate,
@@ -39,12 +38,10 @@ router.delete("/vendor/:id", authenticate, authorizeVendor, (req, res, next) =>
   productController.vendorDelete(req, res, next),
 );
 
-// Dynamic :id route (must be after all static routes)
 router.get("/:id", (req, res, next) =>
   productController.getById(req, res, next),
 );
 
-// Admin product routes
 router.put("/:id", authenticate, authorizeAdmin, (req, res, next) =>
   productController.update(req, res, next),
 );

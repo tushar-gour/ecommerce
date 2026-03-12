@@ -48,7 +48,6 @@ class PaymentController {
         orderData,
       } = req.body;
 
-      // Verify signature
       const body = razorpay_order_id + "|" + razorpay_payment_id;
       const expectedSignature = crypto
         .createHmac("sha256", env.razorpayKeySecret)
@@ -59,7 +58,6 @@ class PaymentController {
         throw ApiError.badRequest("Payment verification failed");
       }
 
-      // Create order after successful payment verification
       const order = await orderService.create(req.user.id, {
         ...orderData,
         paymentId: razorpay_payment_id,

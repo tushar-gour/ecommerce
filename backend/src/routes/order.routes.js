@@ -15,7 +15,6 @@ router.get("/my-orders", authenticate, (req, res, next) =>
   orderController.getUserOrders(req, res, next),
 );
 
-// Vendor order routes
 router.get("/vendor/orders", authenticate, authorizeVendor, (req, res, next) =>
   orderController.getVendorOrders(req, res, next),
 );
