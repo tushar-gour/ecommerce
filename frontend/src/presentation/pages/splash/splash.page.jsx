@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ShoppingBag } from "lucide-react";
 
 const SplashPage = () => {
   const navigate = useNavigate();
@@ -22,12 +21,12 @@ const SplashPage = () => {
       }`}
     >
       <div className="text-center space-y-4 animate-pulse">
-        <div className="inline-flex items-center justify-center w-20 h-20 bg-primary/10 rounded-3xl">
-          <ShoppingBag className="w-10 h-10 text-primary" />
-        </div>
-        <h1 className="text-3xl font-semibold text-gray-800 tracking-tight">
-          Tushar Store
-        </h1>
+        <img
+          src="/images/store_logo.png"
+          alt="Tushar Store"
+          className="w-20 h-20 rounded-3xl mx-auto"
+        />
+        <h1 className="text-3xl font-semibold text-gray-800">Tushar Store</h1>
         <p className="text-sm text-gray-400">Your everyday store</p>
       </div>
     </div>

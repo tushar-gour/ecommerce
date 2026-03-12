@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
-  ShoppingBag,
   Search,
   User,
   Menu,
@@ -50,9 +49,13 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           <Link
             to="/home"
-            className="flex items-center gap-2 text-xl font-semibold text-gray-800 tracking-tight"
+            className="flex items-center gap-2 text-xl font-semibold text-gray-800"
           >
-            <ShoppingBag className="w-6 h-6 text-primary" strokeWidth={2} />
+            <img
+              src="/images/store_logo.png"
+              alt="Tushar Store"
+              className="w-7 h-7"
+            />
             <span>Tushar Store</span>
           </Link>
 

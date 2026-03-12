@@ -55,24 +55,15 @@ const HomePage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full">
-                <Sparkles className="w-4 h-4 text-primary" />
-                <span className="text-xs font-medium text-primary tracking-wide">
-                  New Collection 2026
-                </span>
-              </div>
-
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight tracking-tight">
-                Discover
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight">
+                Welcome to
                 <br />
-                <span className="text-primary">Premium</span>
-                <br />
-                Products
+                <span className="text-primary">Tushar Store</span>
               </h1>
 
               <p className="text-base sm:text-lg text-gray-500 max-w-lg leading-relaxed">
-                Curated collection of minimalist products designed for the
-                modern lifestyle. Quality meets elegance.
+                Find everything you need in one place. Great products, fair
+                prices, and fast delivery.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -97,16 +88,15 @@ const HomePage = () => {
             </div>
 
             <div className="relative hidden lg:block">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-[3rem]" />
-              <div className="relative bg-feature-card rounded-[3rem] p-12 shadow-elevated">
+              <div className="relative bg-feature-card rounded-3xl p-12 shadow-soft">
                 <img
                   src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80"
                   alt="Featured product"
                   className="w-full h-80 object-contain"
                 />
-                <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-sm rounded-2xl p-5 shadow-soft">
+                <div className="absolute bottom-8 left-8 right-8 bg-white/90 rounded-2xl p-5 shadow-soft">
                   <p className="text-sm font-semibold text-gray-800">
-                    Premium Collection
+                    New Arrivals
                   </p>
                   <p className="text-xs text-gray-500 mt-1">
                     Starting from ₹499
@@ -116,9 +106,6 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-
-        <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-10 w-96 h-96 bg-shadow-start/30 rounded-full blur-3xl" />
       </section>
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">

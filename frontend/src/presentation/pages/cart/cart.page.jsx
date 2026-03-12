@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Trash2, Plus, Minus, ShoppingBag, ArrowRight } from "lucide-react";
+import { Trash2, Plus, Minus, ArrowRight } from "lucide-react";
 import Navbar from "../../components/layout/navbar.jsx";
 import Footer from "../../components/layout/footer.jsx";
 import useCart from "../../../core/hooks/useCart.js";
@@ -30,7 +30,12 @@ const CartPage = () => {
       <div className="min-h-screen bg-page-bg">
         <Navbar />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-          <ShoppingBag className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+          <img
+            src="/images/store_logo.png"
+            alt="Tushar Store"
+            className="w-16 h-16 mx-auto mb-2 opacity-30"
+          />
+          <p className="text-xs text-gray-400 mb-4">Tushar Store</p>
           <h2 className="text-2xl font-bold text-gray-800">
             Your cart is empty
           </h2>

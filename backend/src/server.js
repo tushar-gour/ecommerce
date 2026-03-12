@@ -18,7 +18,14 @@ class Server {
   }
 
   configureMiddleware() {
-    this.app.use(cors());
+    this.app.use(
+      cors({
+        origin: "*",
+        methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+        allowedHeaders: ["Content-Type", "Authorization"],
+      }),
+    );
+    this.app.options("*", cors());
     this.app.use(express.json({ limit: "10mb" }));
   }
 
@@ -46,4 +53,11 @@ class Server {
 }
 
 const server = new Server();
-server.start();
+
+if (process.env.VERCEL !== "1") {
+  server.start();
+} else {
+  database.connect();
+}
+
+export default server.app;

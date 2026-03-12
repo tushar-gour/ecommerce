@@ -1,4 +1,3 @@
-import { ShoppingBag } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -18,7 +17,11 @@ const Footer = () => {
               to="/"
               className="flex items-center gap-2 text-lg font-semibold text-gray-800"
             >
-              <ShoppingBag className="w-5 h-5 text-primary" />
+              <img
+                src="/images/store_logo.png"
+                alt="Tushar Store"
+                className="w-6 h-6"
+              />
               <span>Tushar Store</span>
             </Link>
             <p className="mt-4 text-sm text-gray-500 leading-relaxed">
