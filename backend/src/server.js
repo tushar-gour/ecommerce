@@ -23,6 +23,9 @@ class Server {
   }
 
   configureRoutes() {
+    this.app.get("/", (req, res) => {
+      res.json({ status: "ok", message: "Tushar Store API is running" });
+    });
     this.app.use("/api/auth", authRoutes);
     this.app.use("/api/products", productRoutes);
     this.app.use("/api/orders", orderRoutes);
