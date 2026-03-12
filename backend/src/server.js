@@ -54,10 +54,12 @@ class Server {
 
 const server = new Server();
 
+// Connect DB on startup (for both local and Vercel)
+database.connect();
+
+// Local dev: start with listen()
 if (process.env.VERCEL !== "1") {
   server.start();
-} else {
-  database.connect();
 }
 
 export default server.app;
