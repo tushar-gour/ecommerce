@@ -18,14 +18,14 @@ class Server {
   }
 
   configureMiddleware() {
-    this.app.use(
-      cors({
-        origin: "*",
-        methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-        allowedHeaders: ["Content-Type", "Authorization"],
-      }),
-    );
-    this.app.options("*", cors());
+    const corsOptions = {
+      origin: env.corsOrigin,
+      methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+      allowedHeaders: ["Content-Type", "Authorization"],
+      credentials: true,
+    };
+    this.app.use(cors(corsOptions));
+    this.app.options("*", cors(corsOptions));
     this.app.use(async (req, res, next) => {
       try {
         await database.connect();
@@ -36,7 +36,7 @@ class Server {
           .json({ success: false, message: "Database connection failed" });
       }
     });
-    this.app.use(express.json({ limit: "10mb" }));
+    this.app.use(express.json({ limit: env.bodyLimit }));
   }
 
   configureRoutes() {

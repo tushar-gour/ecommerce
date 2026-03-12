@@ -11,6 +11,8 @@ class Environment {
     this.nodeEnv = process.env.NODE_ENV || "development";
     this.razorpayKeyId = process.env.RAZORPAY_KEY_ID;
     this.razorpayKeySecret = process.env.RAZORPAY_KEY_SECRET;
+    this.corsOrigin = process.env.CORS_ORIGIN || "*";
+    this.bodyLimit = process.env.BODY_LIMIT || "10mb";
   }
 
   validate() {

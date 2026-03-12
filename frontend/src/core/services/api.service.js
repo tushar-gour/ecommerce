@@ -3,7 +3,7 @@ import axios from "axios";
 class ApiService {
   constructor() {
     this.client = axios.create({
-      baseURL: "https://ecommerce-pearl-eight-92.vercel.app/api",
+      baseURL: import.meta.env.VITE_API_URL,
       headers: { "Content-Type": "application/json" },
     });
 
