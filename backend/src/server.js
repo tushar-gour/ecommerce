@@ -8,6 +8,9 @@ import orderRoutes from "./routes/order.routes.js";
 import cartRoutes from "./routes/cart.routes.js";
 import paymentRoutes from "./routes/payment.routes.js";
 import errorMiddleware from "./middleware/error.middleware.js";
+import dns from "node:dns/promises";
+
+dns.setServers(["1.1.1.1"]);
 
 class Server {
   constructor() {
@@ -26,6 +29,11 @@ class Server {
       }),
     );
     this.app.options("*", cors());
+    // Ensure DB is connected before handling any request
+    this.app.use(async (req, res, next) => {
+      await database.connect();
+      next();
+    });
     this.app.use(express.json({ limit: "10mb" }));
   }
 
@@ -54,10 +62,6 @@ class Server {
 
 const server = new Server();
 
-// Connect DB on startup (for both local and Vercel)
-database.connect();
-
-// Local dev: start with listen()
 if (process.env.VERCEL !== "1") {
   server.start();
 }

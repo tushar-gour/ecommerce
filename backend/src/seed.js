@@ -3,6 +3,8 @@ import bcrypt from "bcryptjs";
 import env from "./config/env.js";
 import UserModel from "./models/user.model.js";
 import ProductModel from "./models/product.model.js";
+import dns from "node:dns/promises";
+dns.setServers(["1.1.1.1"]);
 
 const seed = async () => {
   try {
@@ -12,7 +14,7 @@ const seed = async () => {
     await UserModel.deleteMany({});
     await ProductModel.deleteMany({});
 
-    const hashedPassword = await bcrypt.hash("password123", 12);
+    const hashedPassword = await bcrypt.hash("thisispassword", 12);
 
     const [admin, vendor1, vendor2, customer] = await UserModel.insertMany([
       {
@@ -36,8 +38,8 @@ const seed = async () => {
         storeName: "FashionHub Styles",
       },
       {
-        name: "John Doe",
-        email: "john@test.com",
+        name: "Tushar Gour",
+        email: "tushar@gmail.com",
         password: hashedPassword,
         role: "user",
       },

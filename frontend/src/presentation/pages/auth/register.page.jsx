@@ -46,14 +46,14 @@ const RegisterPage = () => {
               label="Full Name"
               value={form.name}
               onChange={updateField("name")}
-              placeholder="John Doe"
+              placeholder="Tushar Gour"
             />
             <AuthField
               label="Email"
               type="email"
               value={form.email}
               onChange={updateField("email")}
-              placeholder="you@example.com"
+              placeholder="tushar@gmail.com"
             />
             <AuthField
               label="Password"
