@@ -1,0 +1,256 @@
+import { ArrowRight, Sparkles, Truck, Shield, RotateCcw } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import Navbar from "../../components/layout/navbar.jsx";
+import Footer from "../../components/layout/footer.jsx";
+import ProductCard from "../../components/products/product.card.jsx";
+import CategoryCard from "../../components/products/category.card.jsx";
+import FeaturedCarousel from "../../components/products/featured.carousel.jsx";
+import useProducts from "../../../core/hooks/useProducts.js";
+
+const CATEGORY_IMAGES = {
+  Electronics:
+    "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=400&q=80",
+  Fashion:
+    "https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&q=80",
+  Accessories:
+    "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=400&q=80",
+  "Home & Living":
+    "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80",
+  Sports:
+    "https://images.unsplash.com/photo-1461896836934-bd45ba8fcf9b?w=400&q=80",
+  Beauty:
+    "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&q=80",
+};
+
+const DEMO_CATEGORIES = [
+  "Electronics",
+  "Fashion",
+  "Accessories",
+  "Home & Living",
+  "Sports",
+  "Beauty",
+];
+
+const PERKS = [
+  { icon: Truck, title: "Free Shipping", desc: "On orders over ₹500" },
+  { icon: Shield, title: "Secure Payment", desc: "256-bit SSL encryption" },
+  { icon: RotateCcw, title: "Easy Returns", desc: "30-day return policy" },
+  { icon: Sparkles, title: "Premium Quality", desc: "Handpicked products" },
+];
+
+const HomePage = () => {
+  const navigate = useNavigate();
+  const { featured, bestSellers, categories } = useProducts();
+
+  const displayFeatured = featured;
+  const displayBestSellers = bestSellers;
+  const displayCategories =
+    categories.length > 0 ? categories : DEMO_CATEGORIES;
+
+  return (
+    <div className="min-h-screen bg-page-bg">
+      <Navbar />
+
+      <section className="relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full">
+                <Sparkles className="w-4 h-4 text-primary" />
+                <span className="text-xs font-medium text-primary tracking-wide">
+                  New Collection 2026
+                </span>
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight tracking-tight">
+                Discover
+                <br />
+                <span className="text-primary">Premium</span>
+                <br />
+                Products
+              </h1>
+
+              <p className="text-base sm:text-lg text-gray-500 max-w-lg leading-relaxed">
+                Curated collection of minimalist products designed for the
+                modern lifestyle. Quality meets elegance.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button
+                  onClick={() => navigate("/products")}
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary
+                    text-white font-medium rounded-2xl hover:bg-primary-hover transition-all
+                    duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-soft"
+                >
+                  Shop Now
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => navigate("/products")}
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white
+                    text-gray-800 font-medium rounded-2xl border border-border hover:bg-card-bg
+                    transition-all duration-300"
+                >
+                  Explore Collection
+                </button>
+              </div>
+            </div>
+
+            <div className="relative hidden lg:block">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-[3rem]" />
+              <div className="relative bg-feature-card rounded-[3rem] p-12 shadow-elevated">
+                <img
+                  src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80"
+                  alt="Featured product"
+                  className="w-full h-80 object-contain"
+                />
+                <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-sm rounded-2xl p-5 shadow-soft">
+                  <p className="text-sm font-semibold text-gray-800">
+                    Premium Collection
+                  </p>
+                  <p className="text-xs text-gray-500 mt-1">
+                    Starting from ₹499
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 left-10 w-96 h-96 bg-shadow-start/30 rounded-full blur-3xl" />
+      </section>
+
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          {PERKS.map((perk) => (
+            <div
+              key={perk.title}
+              className="flex flex-col items-center text-center p-6 bg-card-bg rounded-2xl
+                border border-border/50 hover:shadow-soft transition-all duration-300"
+            >
+              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-3">
+                <perk.icon className="w-5 h-5 text-primary" />
+              </div>
+              <h3 className="text-sm font-semibold text-gray-800">
+                {perk.title}
+              </h3>
+              <p className="text-xs text-gray-500 mt-1">{perk.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+        <div className="flex items-end justify-between mb-10">
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 tracking-tight">
+              Shop by Category
+            </h2>
+            <p className="text-sm text-gray-500 mt-2">
+              Browse our curated collections
+            </p>
+          </div>
+          <Link
+            to="/products"
+            className="hidden sm:flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+          >
+            View All <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          {displayCategories.map((cat) => (
+            <Link
+              key={cat}
+              to={`/products?category=${encodeURIComponent(cat)}`}
+            >
+              <CategoryCard name={cat} image={CATEGORY_IMAGES[cat]} />
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {displayFeatured.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+          <div className="flex items-end justify-between mb-10">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 tracking-tight">
+                Featured Products
+              </h2>
+              <p className="text-sm text-gray-500 mt-2">Handpicked for you</p>
+            </div>
+          </div>
+
+          <FeaturedCarousel products={displayFeatured} />
+        </section>
+      )}
+
+      {displayBestSellers.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+          <div className="flex items-end justify-between mb-10">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 tracking-tight">
+                Best Sellers
+              </h2>
+              <p className="text-sm text-gray-500 mt-2">
+                Most loved by our customers
+              </p>
+            </div>
+            <Link
+              to="/products"
+              className="hidden sm:flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+            >
+              View All <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            {displayBestSellers.map((product) => (
+              <ProductCard key={product._id} product={product} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+        <div
+          className="relative bg-gradient-to-br from-primary/10 via-feature-card to-card-bg
+            rounded-[2rem] p-10 md:p-16 text-center overflow-hidden"
+        >
+          <div className="relative z-10 max-w-xl mx-auto space-y-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 tracking-tight">
+              Stay in the Loop
+            </h2>
+            <p className="text-sm text-gray-500">
+              Subscribe to get special offers, early access to new products, and
+              curated recommendations.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-5 py-3.5 bg-white border border-border rounded-xl
+                  text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2
+                  focus:ring-primary/30 focus:border-primary transition-all duration-300"
+              />
+              <button
+                className="px-6 py-3.5 bg-primary text-white text-sm font-medium rounded-xl
+                  hover:bg-primary-hover transition-all duration-300 transform hover:scale-[1.02]
+                  active:scale-[0.98] shadow-soft whitespace-nowrap"
+              >
+                Subscribe
+              </button>
+            </div>
+          </div>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-shadow-start/20 rounded-full blur-3xl" />
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default HomePage;
