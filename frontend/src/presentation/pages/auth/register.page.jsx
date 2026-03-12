@@ -30,7 +30,7 @@ const RegisterPage = () => {
             Create account
           </h1>
           <p className="text-sm text-gray-500 mt-2">
-            Join Luxe and explore premium products
+            Join Tushar Store to start shopping
           </p>
         </div>
 

@@ -96,7 +96,7 @@ const ProductsPage = () => {
         {/* Header */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
               {filters.q ?
                 `Results for "${filters.q}"`
               : filters.category || "All Products"}

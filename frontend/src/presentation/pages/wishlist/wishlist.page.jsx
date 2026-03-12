@@ -62,7 +62,7 @@ const WishlistPage = () => {
       <Navbar />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 tracking-tight mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-8">
           My Wishlist
         </h1>
 

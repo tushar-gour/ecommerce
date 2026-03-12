@@ -27,9 +27,7 @@ const LoginPage = () => {
             <ShoppingBag className="w-7 h-7 text-primary" />
           </div>
           <h1 className="text-2xl font-semibold text-gray-800">Welcome back</h1>
-          <p className="text-sm text-gray-500 mt-2">
-            Sign in to your Luxe account
-          </p>
+          <p className="text-sm text-gray-500 mt-2">Sign in to your account</p>
         </div>
 
         <div className="bg-white rounded-3xl p-8 shadow-card border border-border/50">

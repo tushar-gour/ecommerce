@@ -57,7 +57,7 @@ const CartPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
               Shopping Cart
             </h1>
             <p className="text-sm text-gray-500 mt-1">{totalItems} items</p>
@@ -172,8 +172,7 @@ const CartPage = () => {
                 onClick={handleCheckout}
                 className="w-full mt-6 inline-flex items-center justify-center gap-2 px-6 py-3.5
                   bg-primary text-white font-medium rounded-2xl hover:bg-primary-hover
-                  transition-all duration-300 transform hover:scale-[1.01] active:scale-[0.99]
-                  shadow-soft"
+                  transition-all duration-300 shadow-soft"
               >
                 Proceed to Checkout <ArrowRight className="w-4 h-4" />
               </button>

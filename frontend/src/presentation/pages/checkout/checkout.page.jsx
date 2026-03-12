@@ -64,7 +64,7 @@ const CheckoutPage = () => {
         key: keyId,
         amount: Math.round(finalAmount * 100),
         currency: "INR",
-        name: "E-Commerce Store",
+        name: "Tushar Store",
         description: `Order of ${items.length} item${items.length > 1 ? "s" : ""}`,
         order_id: orderId,
         handler: async (paymentResponse) => {
@@ -148,7 +148,7 @@ const CheckoutPage = () => {
           <ChevronLeft className="w-4 h-4" /> Back
         </button>
 
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 tracking-tight mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-8">
           Checkout
         </h1>
 

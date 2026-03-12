@@ -155,10 +155,10 @@ const ProductDetailPage = () => {
           {/* Details */}
           <div className="space-y-6">
             <div>
-              <p className="text-xs font-medium text-icon uppercase tracking-widest mb-2">
+              <p className="text-xs font-medium text-icon uppercase mb-2">
                 {product.category}
               </p>
-              <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 tracking-tight">
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
                 {product.name}
               </h1>
             </div>
@@ -243,8 +243,7 @@ const ProductDetailPage = () => {
                   onClick={handleAddToCart}
                   className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5
                     bg-primary text-white font-medium rounded-2xl hover:bg-primary-hover
-                    transition-all duration-300 transform hover:scale-[1.01] active:scale-[0.99]
-                    shadow-soft"
+                    transition-all duration-300 shadow-soft"
                 >
                   <ShoppingCart className="w-5 h-5" /> Add to Cart
                 </button>

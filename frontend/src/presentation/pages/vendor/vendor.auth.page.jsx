@@ -180,7 +180,7 @@ const VendorAuthPage = () => {
               to="/login"
               className="text-xs text-gray-400 hover:text-gray-600"
             >
-              Customer login →
+              Customer login
             </Link>
           </div>
         </div>

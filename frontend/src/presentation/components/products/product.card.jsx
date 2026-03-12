@@ -9,21 +9,21 @@ const ProductCard = ({ product }) => {
   return (
     <Link
       to={`/product/${product._id}`}
-      className="group bg-card-bg rounded-3xl overflow-hidden transition-all duration-500
-        hover:shadow-card hover:-translate-y-1 block"
+      className="group bg-card-bg rounded-3xl overflow-hidden transition-all duration-300
+        hover:shadow-card block"
     >
       <div className="relative aspect-square overflow-hidden bg-feature-card p-6">
         <img
           src={image}
           alt={product.name}
           className="w-full h-full object-contain transition-transform duration-700
-            group-hover:scale-110"
+            group-hover:scale-105"
         />
       </div>
 
       <div className="p-5 space-y-3">
         <div className="space-y-1">
-          <p className="text-xs font-medium text-icon uppercase tracking-widest">
+          <p className="text-xs font-medium text-icon uppercase">
             {product.category}
           </p>
           <h3 className="text-sm font-semibold text-gray-800 line-clamp-1">
@@ -56,8 +56,7 @@ const ProductCard = ({ product }) => {
               addItem(product);
             }}
             className="p-2.5 bg-primary text-white rounded-xl hover:bg-primary-hover
-              transition-all duration-300 transform hover:scale-105 active:scale-95
-              shadow-soft"
+              transition-all duration-300 shadow-soft"
           >
             <ShoppingCart className="w-4 h-4" />
           </button>

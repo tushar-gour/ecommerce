@@ -53,7 +53,7 @@ const Navbar = () => {
             className="flex items-center gap-2 text-xl font-semibold text-gray-800 tracking-tight"
           >
             <ShoppingBag className="w-6 h-6 text-primary" strokeWidth={2} />
-            <span>Luxe</span>
+            <span>Tushar Store</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">

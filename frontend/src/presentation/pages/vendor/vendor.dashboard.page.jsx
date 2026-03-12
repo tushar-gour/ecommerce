@@ -169,7 +169,7 @@ const VendorDashboardPage = () => {
                             #{order._id.slice(-8).toUpperCase()}
                           </p>
                           <p className="text-xs text-gray-500 mt-0.5">
-                            {new Date(order.createdAt).toLocaleDateString()} ·{" "}
+                            {new Date(order.createdAt).toLocaleDateString()} -{" "}
                             {order.items.length} item
                             {order.items.length > 1 ? "s" : ""}
                           </p>

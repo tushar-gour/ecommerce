@@ -26,11 +26,9 @@ const SplashPage = () => {
           <ShoppingBag className="w-10 h-10 text-primary" />
         </div>
         <h1 className="text-3xl font-semibold text-gray-800 tracking-tight">
-          Luxe
+          Tushar Store
         </h1>
-        <p className="text-sm text-gray-400 tracking-widest uppercase">
-          Premium Store
-        </p>
+        <p className="text-sm text-gray-400">Your everyday store</p>
       </div>
     </div>
   );

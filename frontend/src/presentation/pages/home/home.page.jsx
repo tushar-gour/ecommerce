@@ -1,4 +1,4 @@
-import { ArrowRight, Sparkles, Truck, Shield, RotateCcw } from "lucide-react";
+import { ArrowRight, Truck, Shield, RotateCcw, Star } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../../components/layout/navbar.jsx";
 import Footer from "../../components/layout/footer.jsx";
@@ -33,9 +33,9 @@ const DEMO_CATEGORIES = [
 
 const PERKS = [
   { icon: Truck, title: "Free Shipping", desc: "On orders over ₹500" },
-  { icon: Shield, title: "Secure Payment", desc: "256-bit SSL encryption" },
+  { icon: Shield, title: "Secure Payment", desc: "SSL encrypted checkout" },
   { icon: RotateCcw, title: "Easy Returns", desc: "30-day return policy" },
-  { icon: Sparkles, title: "Premium Quality", desc: "Handpicked products" },
+  { icon: Star, title: "Quality Products", desc: "Trusted by customers" },
 ];
 
 const HomePage = () => {
@@ -80,7 +80,7 @@ const HomePage = () => {
                   onClick={() => navigate("/products")}
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary
                     text-white font-medium rounded-2xl hover:bg-primary-hover transition-all
-                    duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-soft"
+                    duration-300 shadow-soft"
                 >
                   Shop Now
                   <ArrowRight className="w-4 h-4" />
@@ -91,7 +91,7 @@ const HomePage = () => {
                     text-gray-800 font-medium rounded-2xl border border-border hover:bg-card-bg
                     transition-all duration-300"
                 >
-                  Explore Collection
+                  Browse Products
                 </button>
               </div>
             </div>
@@ -144,11 +144,11 @@ const HomePage = () => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
         <div className="flex items-end justify-between mb-10">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
               Shop by Category
             </h2>
             <p className="text-sm text-gray-500 mt-2">
-              Browse our curated collections
+              Find what you're looking for
             </p>
           </div>
           <Link
@@ -175,10 +175,10 @@ const HomePage = () => {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
           <div className="flex items-end justify-between mb-10">
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
                 Featured Products
               </h2>
-              <p className="text-sm text-gray-500 mt-2">Handpicked for you</p>
+              <p className="text-sm text-gray-500 mt-2">Worth checking out</p>
             </div>
           </div>
 
@@ -190,11 +190,11 @@ const HomePage = () => {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
           <div className="flex items-end justify-between mb-10">
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
                 Best Sellers
               </h2>
               <p className="text-sm text-gray-500 mt-2">
-                Most loved by our customers
+                Popular with our customers
               </p>
             </div>
             <Link
@@ -214,37 +214,30 @@ const HomePage = () => {
       )}
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
-        <div
-          className="relative bg-gradient-to-br from-primary/10 via-feature-card to-card-bg
-            rounded-[2rem] p-10 md:p-16 text-center overflow-hidden"
-        >
-          <div className="relative z-10 max-w-xl mx-auto space-y-6">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 tracking-tight">
-              Stay in the Loop
+        <div className="relative bg-card-bg rounded-2xl p-10 md:p-16 text-center border border-border/50">
+          <div className="max-w-xl mx-auto space-y-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
+              Get Updates
             </h2>
             <p className="text-sm text-gray-500">
-              Subscribe to get special offers, early access to new products, and
-              curated recommendations.
+              Sign up for deals, new arrivals, and more.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder="Your email address"
                 className="flex-1 px-5 py-3.5 bg-white border border-border rounded-xl
                   text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2
                   focus:ring-primary/30 focus:border-primary transition-all duration-300"
               />
               <button
                 className="px-6 py-3.5 bg-primary text-white text-sm font-medium rounded-xl
-                  hover:bg-primary-hover transition-all duration-300 transform hover:scale-[1.02]
-                  active:scale-[0.98] shadow-soft whitespace-nowrap"
+                  hover:bg-primary-hover transition-all duration-300 shadow-soft whitespace-nowrap"
               >
                 Subscribe
               </button>
             </div>
           </div>
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-shadow-start/20 rounded-full blur-3xl" />
         </div>
       </section>
 

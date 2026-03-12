@@ -5,9 +5,8 @@ const AuthButton = ({ children, onClick, loading, type = "submit" }) => {
       onClick={onClick}
       disabled={loading}
       className="w-full py-3.5 bg-primary text-white font-medium rounded-2xl
-        hover:bg-primary-hover transition-all duration-300 transform hover:scale-[1.01]
-        active:scale-[0.99] shadow-soft disabled:opacity-60 disabled:cursor-not-allowed
-        text-sm tracking-wide"
+        hover:bg-primary-hover transition-all duration-300 shadow-soft
+        disabled:opacity-60 disabled:cursor-not-allowed text-sm"
     >
       {loading ?
         <span className="inline-flex items-center gap-2">

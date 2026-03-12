@@ -19,11 +19,10 @@ const Footer = () => {
               className="flex items-center gap-2 text-lg font-semibold text-gray-800"
             >
               <ShoppingBag className="w-5 h-5 text-primary" />
-              <span>Luxe</span>
+              <span>Tushar Store</span>
             </Link>
             <p className="mt-4 text-sm text-gray-500 leading-relaxed">
-              Premium products crafted with care. Elevate your everyday
-              experience.
+              Your one-stop shop for quality products at great prices.
             </p>
           </div>
 
@@ -47,7 +46,7 @@ const Footer = () => {
 
         <div className="mt-16 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-gray-400">
-            &copy; {new Date().getFullYear()} Luxe. All rights reserved.
+            &copy; {new Date().getFullYear()} Tushar Store. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             {["Twitter", "Instagram", "GitHub"].map((social) => (
