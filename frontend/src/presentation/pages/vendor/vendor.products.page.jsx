@@ -7,7 +7,6 @@ import {
   Trash2,
   X,
   Save,
-  Image,
   ChevronLeft,
   AlertCircle,
 } from "lucide-react";
@@ -32,7 +31,7 @@ const emptyProduct = {
   price: "",
   category: "Electronics",
   stock: "",
-  images: [""],
+  images: [],
   featured: false,
   bestSeller: false,
 };
@@ -83,7 +82,7 @@ const VendorProductsPage = () => {
       price: product.price.toString(),
       category: product.category,
       stock: product.stock.toString(),
-      images: product.images?.length ? [...product.images] : [""],
+      images: product.images?.length ? [...product.images] : [],
       featured: product.featured || false,
       bestSeller: product.bestSeller || false,
     });
@@ -102,16 +101,30 @@ const VendorProductsPage = () => {
     setForm((prev) => ({ ...prev, [field]: value }));
   };
 
-  const updateImage = (index) => (e) => {
-    setForm((prev) => {
-      const images = [...prev.images];
-      images[index] = e.target.value;
-      return { ...prev, images };
-    });
-  };
+  const handleImagesSelect = async (e) => {
+    const files = Array.from(e.target.files || []);
+    if (files.length === 0) return;
 
-  const addImageField = () => {
-    setForm((prev) => ({ ...prev, images: [...prev.images, ""] }));
+    const readAsDataUrl = (file) =>
+      new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(String(reader.result || ""));
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+
+    try {
+      const encodedImages = await Promise.all(
+        files.map((file) => readAsDataUrl(file)),
+      );
+      setForm((prev) => ({
+        ...prev,
+        images: [...prev.images, ...encodedImages.filter(Boolean)],
+      }));
+      e.target.value = "";
+    } catch {
+      setError("Unable to read selected image files");
+    }
   };
 
   const removeImageField = (index) => {
@@ -130,11 +143,11 @@ const VendorProductsPage = () => {
         ...form,
         price: parseFloat(form.price),
         stock: parseInt(form.stock, 10),
-        images: form.images.filter((url) => url.trim()),
+        images: form.images.filter((image) => String(image || "").trim()),
       };
 
       if (payload.images.length === 0) {
-        setError("At least one image URL is required");
+        setError("At least one image is required");
         setSaving(false);
         return;
       }
@@ -298,43 +311,46 @@ const VendorProductsPage = () => {
                 </div>
               </div>
 
-              {/* Image URLs */}
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <label className="text-xs font-medium text-gray-500">
-                    Image URLs
+                    Product Images
                   </label>
-                  <button
-                    type="button"
-                    onClick={addImageField}
-                    className="text-xs text-primary hover:underline flex items-center gap-1"
-                  >
-                    <Image className="w-3 h-3" /> Add Image
-                  </button>
+                  <label className="text-xs text-primary hover:underline cursor-pointer">
+                    Add Images
+                    <input
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      onChange={handleImagesSelect}
+                      className="hidden"
+                    />
+                  </label>
                 </div>
-                <div className="space-y-2">
-                  {form.images.map((url, i) => (
-                    <div key={i} className="flex gap-2">
-                      <input
-                        type="url"
-                        value={url}
-                        onChange={updateImage(i)}
-                        className="flex-1 px-4 py-2.5 bg-page-bg border border-border rounded-xl text-sm
-                          focus:outline-none focus:ring-2 focus:ring-primary/30"
-                        placeholder="https://example.com/image.jpg"
+                <div className="flex gap-3 overflow-x-auto pb-1">
+                  {form.images.map((image, i) => (
+                    <div
+                      key={`${i}-${String(image).slice(0, 16)}`}
+                      className="relative w-20 h-20 rounded-xl overflow-hidden border border-border bg-page-bg flex-shrink-0"
+                    >
+                      <img
+                        src={image}
+                        alt={`Product image ${i + 1}`}
+                        className="w-full h-full object-cover"
                       />
-                      {form.images.length > 1 && (
-                        <button
-                          type="button"
-                          onClick={() => removeImageField(i)}
-                          className="p-2 text-red-400 hover:text-red-600"
-                        >
-                          <X className="w-4 h-4" />
-                        </button>
-                      )}
+                      <button
+                        type="button"
+                        onClick={() => removeImageField(i)}
+                        className="absolute top-1 right-1 p-1 rounded-full bg-white/90 text-gray-600 hover:text-red-600"
+                      >
+                        <X className="w-3 h-3" />
+                      </button>
                     </div>
                   ))}
                 </div>
+                {form.images.length === 0 && (
+                  <p className="text-xs text-gray-400">No images selected</p>
+                )}
               </div>
 
               <div className="flex items-center gap-6">
