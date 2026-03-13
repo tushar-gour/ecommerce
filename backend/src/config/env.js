@@ -28,18 +28,6 @@ class Environment {
         throw new Error(`Missing required environment variable: ${key}`);
       }
     }
-
-    const hasCloudinaryUrl = !!this.cloudinaryUrl;
-    const hasCloudinaryKeys =
-      !!this.cloudinaryCloudName &&
-      !!this.cloudinaryApiKey &&
-      !!this.cloudinaryApiSecret;
-
-    if (!hasCloudinaryUrl && !hasCloudinaryKeys) {
-      throw new Error(
-        "Missing Cloudinary configuration. Set CLOUDINARY_URL or CLOUDINARY_CLOUD_NAME/CLOUDINARY_API_KEY/CLOUDINARY_API_SECRET",
-      );
-    }
   }
 }
 
