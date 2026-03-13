@@ -56,12 +56,26 @@ const CheckoutPage = () => {
 
     try {
       const response = await paymentApiService.createOrder(finalAmount);
-      const { orderId, keyId } = response.data;
+      console.log("Create Order Response:", response);
+
+      const { orderId, keyId, amount, currency } = response.data || {};
+
+      if (!orderId || !keyId) {
+        throw new Error(
+          "Invalid response from server: Missing orderId or keyId",
+        );
+      }
+
+      if (!window.Razorpay) {
+        throw new Error(
+          "Razorpay SDK failed to load. Please disable ad-blockers and try again.",
+        );
+      }
 
       const options = {
         key: keyId,
-        amount: Math.round(finalAmount * 100),
-        currency: "INR",
+        amount: amount || Math.round(finalAmount * 100),
+        currency: currency || "INR",
         name: "Tushar Store",
         description: `Order of ${items.length} item${items.length > 1 ? "s" : ""}`,
         order_id: orderId,
@@ -101,12 +115,14 @@ const CheckoutPage = () => {
 
       const razorpay = new window.Razorpay(options);
       razorpay.on("payment.failed", (resp) => {
+        console.error("Payment failed:", resp);
         setError(resp.error?.description || "Payment failed");
         setLoading(false);
       });
       razorpay.open();
     } catch (err) {
-      setError(err.message);
+      console.error("Checkout error:", err);
+      setError(err.message || "An unexpected error occurred");
       setLoading(false);
     }
   };

@@ -5,10 +5,28 @@ import orderService from "../../services/order.service.js";
 import ApiResponse from "../../utils/ApiResponse.js";
 import ApiError from "../../utils/ApiError.js";
 
-const razorpay = new Razorpay({
-  key_id: env.razorpayKeyId,
-  key_secret: env.razorpayKeySecret,
-});
+const hasRazorpayConfig = () =>
+  Boolean(env.razorpayKeyId && env.razorpayKeySecret);
+
+const getRazorpayClient = () => {
+  if (!hasRazorpayConfig()) {
+    throw ApiError.internal("Payment gateway is not configured");
+  }
+  return new Razorpay({
+    key_id: env.razorpayKeyId,
+    key_secret: env.razorpayKeySecret,
+  });
+};
+
+const normalizePaymentError = (error) => {
+  if (error instanceof ApiError) return error;
+  const message =
+    error?.error?.description ||
+    error?.description ||
+    error?.message ||
+    "Payment service is unavailable";
+  return ApiError.internal(message);
+};
 
 class PaymentController {
   async createOrder(req, res, next) {
@@ -18,8 +36,10 @@ class PaymentController {
         throw ApiError.badRequest("Invalid amount");
       }
 
+      const razorpay = getRazorpayClient();
+
       const options = {
-        amount: Math.round(amount * 100), // Razorpay expects paise
+        amount: Math.round(amount * 100),
         currency: "INR",
         receipt: `order_${Date.now()}`,
       };
@@ -35,12 +55,15 @@ class PaymentController {
         }),
       );
     } catch (error) {
-      next(error);
+      next(normalizePaymentError(error));
     }
   }
 
   async verifyAndCreateOrder(req, res, next) {
     try {
+      if (!hasRazorpayConfig()) {
+        throw ApiError.internal("Payment gateway is not configured");
+      }
       const {
         razorpay_order_id,
         razorpay_payment_id,
@@ -65,11 +88,14 @@ class PaymentController {
 
       res.status(201).json(ApiResponse.created(order));
     } catch (error) {
-      next(error);
+      next(normalizePaymentError(error));
     }
   }
 
   getKey(req, res) {
+    if (!hasRazorpayConfig()) {
+      throw ApiError.internal("Payment gateway is not configured");
+    }
     res.json(ApiResponse.ok({ keyId: env.razorpayKeyId }));
   }
 }
