@@ -17,7 +17,7 @@ const CATEGORY_IMAGES = {
   "Home & Living":
     "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80",
   Sports:
-    "https://images.unsplash.com/photo-1461896836934-bd45ba8fcf9b?w=400&q=80",
+    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdailyiowan.com%2Fwp-content%2Fuploads%2F2022%2F07%2FiStock-1188462138.jpg&f=1&nofb=1&ipt=0891242004f10c8394af5cde2eb92ad68feb57d675a4d7f436da115af1ae6222",
   Beauty:
     "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&q=80",
 };
@@ -214,8 +214,7 @@ const HomePage = () => {
                 type="email"
                 placeholder="Your email address"
                 className="flex-1 px-5 py-3.5 bg-white border border-border rounded-xl
-                  text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2
-                  focus:ring-primary/30 focus:border-primary transition-all duration-300"
+                  text-sm placeholder:text-gray-400 focus:outline-none transition-all duration-300"
               />
               <button
                 className="px-6 py-3.5 bg-primary text-white text-sm font-medium rounded-xl

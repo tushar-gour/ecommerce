@@ -72,7 +72,7 @@ const VendorAuthPage = () => {
                     onChange={update("name")}
                     required
                     className="w-full px-4 py-3 bg-page-bg border border-border rounded-xl text-sm
-                      focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      focus:outline-none"
                     placeholder="John Doe"
                   />
                 </div>
@@ -86,7 +86,7 @@ const VendorAuthPage = () => {
                     onChange={update("storeName")}
                     required
                     className="w-full px-4 py-3 bg-page-bg border border-border rounded-xl text-sm
-                      focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      focus:outline-none"
                     placeholder="My Awesome Store"
                   />
                 </div>
@@ -103,7 +103,7 @@ const VendorAuthPage = () => {
                 onChange={update("email")}
                 required
                 className="w-full px-4 py-3 bg-page-bg border border-border rounded-xl text-sm
-                  focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  focus:outline-none"
                 placeholder="vendor@example.com"
               />
             </div>
@@ -120,7 +120,7 @@ const VendorAuthPage = () => {
                   required
                   minLength={6}
                   className="w-full px-4 py-3 bg-page-bg border border-border rounded-xl text-sm
-                    focus:outline-none focus:ring-2 focus:ring-primary/30 pr-10"
+                    focus:outline-none pr-10"
                   placeholder="••••••••"
                 />
                 <button

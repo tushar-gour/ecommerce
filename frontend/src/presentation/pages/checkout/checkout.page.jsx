@@ -178,7 +178,7 @@ const CheckoutPage = () => {
                       onChange={updateAddress("street")}
                       required
                       className="w-full px-4 py-3 bg-page-bg border border-border rounded-xl text-sm
-                        focus:outline-none focus:ring-2 focus:ring-primary/30"
+                        focus:outline-none"
                       placeholder="123 Main Street"
                     />
                   </div>
@@ -193,7 +193,7 @@ const CheckoutPage = () => {
                         onChange={updateAddress("city")}
                         required
                         className="w-full px-4 py-3 bg-page-bg border border-border rounded-xl text-sm
-                          focus:outline-none focus:ring-2 focus:ring-primary/30"
+                          focus:outline-none"
                         placeholder="City"
                       />
                     </div>
@@ -207,7 +207,7 @@ const CheckoutPage = () => {
                         onChange={updateAddress("state")}
                         required
                         className="w-full px-4 py-3 bg-page-bg border border-border rounded-xl text-sm
-                          focus:outline-none focus:ring-2 focus:ring-primary/30"
+                          focus:outline-none"
                         placeholder="State"
                       />
                     </div>
@@ -223,7 +223,7 @@ const CheckoutPage = () => {
                         onChange={updateAddress("zipCode")}
                         required
                         className="w-full px-4 py-3 bg-page-bg border border-border rounded-xl text-sm
-                          focus:outline-none focus:ring-2 focus:ring-primary/30"
+                          focus:outline-none"
                         placeholder="12345"
                       />
                     </div>
@@ -237,7 +237,7 @@ const CheckoutPage = () => {
                         onChange={updateAddress("country")}
                         required
                         className="w-full px-4 py-3 bg-page-bg border border-border rounded-xl text-sm
-                          focus:outline-none focus:ring-2 focus:ring-primary/30"
+                          focus:outline-none"
                         placeholder="Country"
                       />
                     </div>

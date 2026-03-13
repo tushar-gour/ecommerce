@@ -239,7 +239,7 @@ const VendorProductsPage = () => {
                     onChange={updateField("name")}
                     required
                     className="w-full px-4 py-3 bg-page-bg border border-border rounded-xl text-sm
-                      focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      focus:outline-none"
                     placeholder="Product name"
                   />
                 </div>
@@ -251,7 +251,7 @@ const VendorProductsPage = () => {
                     value={form.category}
                     onChange={updateField("category")}
                     className="w-full px-4 py-3 bg-page-bg border border-border rounded-xl text-sm
-                      focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      focus:outline-none"
                   >
                     {CATEGORIES.map((c) => (
                       <option key={c} value={c}>
@@ -272,7 +272,7 @@ const VendorProductsPage = () => {
                   required
                   rows={3}
                   className="w-full px-4 py-3 bg-page-bg border border-border rounded-xl text-sm
-                    focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none"
+                    focus:outline-none resize-none"
                   placeholder="Describe your product"
                 />
               </div>
@@ -290,7 +290,7 @@ const VendorProductsPage = () => {
                     onChange={updateField("price")}
                     required
                     className="w-full px-4 py-3 bg-page-bg border border-border rounded-xl text-sm
-                      focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      focus:outline-none"
                     placeholder="29.99"
                   />
                 </div>
@@ -305,7 +305,7 @@ const VendorProductsPage = () => {
                     onChange={updateField("stock")}
                     required
                     className="w-full px-4 py-3 bg-page-bg border border-border rounded-xl text-sm
-                      focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      focus:outline-none"
                     placeholder="100"
                   />
                 </div>
@@ -359,7 +359,7 @@ const VendorProductsPage = () => {
                     type="checkbox"
                     checked={form.featured}
                     onChange={updateField("featured")}
-                    className="w-4 h-4 rounded border-border text-primary focus:ring-primary/30"
+                    className="w-4 h-4 rounded border-border text-primary"
                   />
                   <span className="text-sm text-gray-600">Featured</span>
                 </label>
@@ -368,7 +368,7 @@ const VendorProductsPage = () => {
                     type="checkbox"
                     checked={form.bestSeller}
                     onChange={updateField("bestSeller")}
-                    className="w-4 h-4 rounded border-border text-primary focus:ring-primary/30"
+                    className="w-4 h-4 rounded border-border text-primary"
                   />
                   <span className="text-sm text-gray-600">Best Seller</span>
                 </label>

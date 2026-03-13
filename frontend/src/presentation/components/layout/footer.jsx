@@ -52,13 +52,26 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} Tushar Store. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            {["Twitter", "Instagram", "GitHub"].map((social) => (
-              <span
-                key={social}
-                className="text-sm text-gray-400 hover:text-gray-600 cursor-pointer transition-colors duration-300"
+            {[
+              {
+                label: "LinkedIn",
+                href: "https://www.linkedin.com/in/tushar-gour/",
+              },
+              {
+                label: "Instagram",
+                href: "https://www.instagram.com/tusharr_6707/",
+              },
+              { label: "GitHub", href: "https://github.com/tushar-gour" },
+            ].map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm text-gray-400 hover:text-gray-600 transition-colors duration-300"
               >
-                {social}
-              </span>
+                {social.label}
+              </a>
             ))}
           </div>
         </div>

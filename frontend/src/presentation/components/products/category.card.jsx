@@ -6,12 +6,7 @@ const CategoryCard = ({ name, image, count }) => {
     >
       <div className="aspect-[4/3] overflow-hidden">
         {image ?
-          <img
-            src={image}
-            alt={name}
-            className="w-full h-full object-cover transition-transform duration-500
-              group-hover:scale-105"
-          />
+          <img src={image} alt={name} className="w-full h-full object-cover" />
         : <div className="w-full h-full bg-gradient-to-br from-shadow-start to-shadow-end flex items-center justify-center">
             <span className="text-4xl font-light text-icon">
               {name?.charAt(0)?.toUpperCase()}

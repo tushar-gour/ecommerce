@@ -91,7 +91,7 @@ const Navbar = () => {
                   placeholder="Search products..."
                   autoFocus
                   className="w-48 px-3 py-2 text-sm bg-white border border-border rounded-xl
-                    focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    focus:outline-none"
                 />
                 <button
                   type="button"
@@ -179,7 +179,7 @@ const Navbar = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search products..."
                 className="w-full px-4 py-3 text-sm bg-white border border-border rounded-xl
-                  focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  focus:outline-none"
               />
             </form>
             {navLinks.map((link) => (

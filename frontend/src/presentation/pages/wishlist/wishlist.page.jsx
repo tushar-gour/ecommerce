@@ -103,8 +103,7 @@ const WishlistPage = () => {
                     <img
                       src={product.images?.[0] || product.image}
                       alt={product.name}
-                      className="max-h-full max-w-full object-contain
-                        group-hover:scale-105 transition-transform duration-500"
+                      className="max-h-full max-w-full object-contain"
                     />
                   </div>
                 </Link>

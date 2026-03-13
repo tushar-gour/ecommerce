@@ -10,8 +10,7 @@ const AuthField = ({ label, type = "text", value, onChange, placeholder }) => {
         onChange={onChange}
         placeholder={placeholder}
         className="w-full px-4 py-3.5 bg-white border border-border rounded-2xl text-gray-800
-          placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30
-          focus:border-primary transition-all duration-300 text-sm"
+          placeholder:text-gray-400 focus:outline-none transition-all duration-300 text-sm"
       />
     </div>
   );

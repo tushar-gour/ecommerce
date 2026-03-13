@@ -86,7 +86,7 @@ const seed = async () => {
         category: "Electronics",
         stock: 50,
         images: [
-          "https://images.unsplash.com/photo-1588423771073-b8903fba2b28?w=800",
+          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.epic.com.mt%2Fwp-content%2Fuploads%2F2023%2F03%2FAirPods_Pro_2nd-Gen-1.png&f=1&nofb=1&ipt=dfc97995e9ef993f46880eb166e387cd1a7ca20c87a3eb5dd20aa1c1e8827e24",
         ],
         vendor: vendor1._id,
         featured: false,
@@ -182,7 +182,7 @@ const seed = async () => {
         category: "Accessories",
         stock: 100,
         images: [
-          "https://images.unsplash.com/photo-1586816879360-004f5b0c51e3?w=800",
+          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fae01.alicdn.com%2Fkf%2FH8bcd84b2118e4157b4fbe11c800599fei.jpeg&f=1&nofb=1&ipt=2a2465185c32cdfb473d6b64835f805d7060091ef9325ba551f4d131b8665c94",
         ],
         vendor: vendor1._id,
         featured: false,

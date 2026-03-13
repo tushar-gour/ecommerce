@@ -121,7 +121,7 @@ const ProductsPage = () => {
                 onChange={(e) => updateFilter("q", e.target.value)}
                 placeholder="Search products..."
                 className="w-full sm:w-64 pl-10 pr-4 py-2.5 bg-white border border-border rounded-xl
-                  text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  text-sm focus:outline-none"
               />
             </form>
             <button
@@ -160,7 +160,7 @@ const ProductsPage = () => {
                   value={filters.category}
                   onChange={(e) => updateFilter("category", e.target.value)}
                   className="w-full px-3 py-2 bg-page-bg border border-border rounded-xl text-sm
-                    focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    focus:outline-none"
                 >
                   <option value="">All Categories</option>
                   {categories.map((cat) => (
@@ -181,7 +181,7 @@ const ProductsPage = () => {
                   onChange={(e) => updateFilter("minPrice", e.target.value)}
                   placeholder="₹0"
                   className="w-full px-3 py-2 bg-page-bg border border-border rounded-xl text-sm
-                    focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    focus:outline-none"
                 />
               </div>
 
@@ -195,7 +195,7 @@ const ProductsPage = () => {
                   onChange={(e) => updateFilter("maxPrice", e.target.value)}
                   placeholder="₹9999"
                   className="w-full px-3 py-2 bg-page-bg border border-border rounded-xl text-sm
-                    focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    focus:outline-none"
                 />
               </div>
 
@@ -207,7 +207,7 @@ const ProductsPage = () => {
                   value={filters.minRating}
                   onChange={(e) => updateFilter("minRating", e.target.value)}
                   className="w-full px-3 py-2 bg-page-bg border border-border rounded-xl text-sm
-                    focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    focus:outline-none"
                 >
                   <option value="">Any Rating</option>
                   {[4, 3, 2, 1].map((r) => (
@@ -226,7 +226,7 @@ const ProductsPage = () => {
                   value={filters.inStock}
                   onChange={(e) => updateFilter("inStock", e.target.value)}
                   className="w-full px-3 py-2 bg-page-bg border border-border rounded-xl text-sm
-                    focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    focus:outline-none"
                 >
                   <option value="">All</option>
                   <option value="true">In Stock</option>
@@ -242,7 +242,7 @@ const ProductsPage = () => {
                 value={filters.sort}
                 onChange={(e) => updateFilter("sort", e.target.value)}
                 className="px-3 py-2 bg-page-bg border border-border rounded-xl text-sm
-                  focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  focus:outline-none"
               >
                 <option value="newest">Newest</option>
                 <option value="price_asc">Price: Low to High</option>
