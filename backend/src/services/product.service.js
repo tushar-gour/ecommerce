@@ -1,6 +1,6 @@
 import productRepository from "../repositories/product.repository.js";
 import ApiError from "../utils/ApiError.js";
-import cloudinary from "../config/cloudinary.js";
+import cloudinary, { isCloudinaryConfigured } from "../config/cloudinary.js";
 import env from "../config/env.js";
 
 class ProductService {
@@ -14,6 +14,12 @@ class ProductService {
       !value.startsWith("data:image/")
     ) {
       throw ApiError.badRequest("Invalid image format");
+    }
+    if (!isCloudinaryConfigured) {
+      if (value.startsWith("data:image/")) {
+        throw ApiError.internal("Image upload service is not configured");
+      }
+      return value;
     }
     const result = await cloudinary.uploader.upload(value, {
       folder: env.cloudinaryFolder,

@@ -1,7 +1,13 @@
 import { v2 as cloudinary } from "cloudinary";
 import env from "./env.js";
 
-if (env.cloudinaryUrl) {
+const hasCloudinaryUrl = !!env.cloudinaryUrl;
+const hasCloudinaryKeys =
+  !!env.cloudinaryCloudName &&
+  !!env.cloudinaryApiKey &&
+  !!env.cloudinaryApiSecret;
+
+if (hasCloudinaryUrl) {
   const parsed = new URL(env.cloudinaryUrl);
   cloudinary.config({
     cloud_name: parsed.hostname,
@@ -9,7 +15,7 @@ if (env.cloudinaryUrl) {
     api_secret: decodeURIComponent(parsed.password),
     secure: true,
   });
-} else {
+} else if (hasCloudinaryKeys) {
   cloudinary.config({
     cloud_name: env.cloudinaryCloudName,
     api_key: env.cloudinaryApiKey,
@@ -19,3 +25,4 @@ if (env.cloudinaryUrl) {
 }
 
 export default cloudinary;
+export const isCloudinaryConfigured = hasCloudinaryUrl || hasCloudinaryKeys;
