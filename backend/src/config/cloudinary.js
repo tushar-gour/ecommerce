@@ -7,14 +7,22 @@ const hasCloudinaryKeys =
   !!env.cloudinaryApiKey &&
   !!env.cloudinaryApiSecret;
 
+let isConfigured = false;
+
 if (hasCloudinaryUrl) {
-  const parsed = new URL(env.cloudinaryUrl);
-  cloudinary.config({
-    cloud_name: parsed.hostname,
-    api_key: decodeURIComponent(parsed.username),
-    api_secret: decodeURIComponent(parsed.password),
-    secure: true,
-  });
+  try {
+    const parsed = new URL(env.cloudinaryUrl);
+    cloudinary.config({
+      cloud_name: parsed.hostname,
+      api_key: decodeURIComponent(parsed.username),
+      api_secret: decodeURIComponent(parsed.password),
+      secure: true,
+    });
+    isConfigured = true;
+    console.log("Cloudinary configured via CLOUDINARY_URL");
+  } catch (error) {
+    console.error("Failed to configure Cloudinary from URL:", error.message);
+  }
 } else if (hasCloudinaryKeys) {
   cloudinary.config({
     cloud_name: env.cloudinaryCloudName,
@@ -22,7 +30,11 @@ if (hasCloudinaryUrl) {
     api_secret: env.cloudinaryApiSecret,
     secure: true,
   });
+  isConfigured = true;
+  console.log("Cloudinary configured via individual keys");
+} else {
+  console.warn("Cloudinary is not configured. Image uploads will not work.");
 }
 
 export default cloudinary;
-export const isCloudinaryConfigured = hasCloudinaryUrl || hasCloudinaryKeys;
+export const isCloudinaryConfigured = isConfigured;
