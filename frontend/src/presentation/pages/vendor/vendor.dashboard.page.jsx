@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 import Navbar from "../../components/layout/navbar.jsx";
 import orderApiService from "../../../core/services/order.service.js";
-import productApiService from "../../../core/services/product.service.js";
 import useAuthStore from "../../../core/store/auth.store.js";
 
 const statusConfig = {
@@ -44,16 +43,20 @@ const VendorDashboardPage = () => {
     }
     const fetchData = async () => {
       try {
-        const [statsRes, ordersRes, productsRes] = await Promise.all([
+        const [statsRes, ordersRes] = await Promise.all([
           orderApiService.getVendorStats(),
           orderApiService.getVendorOrders(),
-          productApiService.getVendorProducts(),
         ]);
         setStats(
-          statsRes.data || { totalRevenue: 0, totalOrders: 0, totalItems: 0 },
+          statsRes.data || {
+            totalRevenue: 0,
+            totalOrders: 0,
+            totalItemsSold: 0,
+            productCount: 0,
+          },
         );
         setOrders((ordersRes.data || []).slice(0, 5));
-        setProductCount((productsRes.data || []).length);
+        setProductCount(statsRes.data?.productCount || 0);
       } catch {
         /* ignore */
       } finally {

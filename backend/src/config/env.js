@@ -11,6 +11,12 @@ class Environment {
     this.nodeEnv = process.env.NODE_ENV || "development";
     this.razorpayKeyId = process.env.RAZORPAY_KEY_ID;
     this.razorpayKeySecret = process.env.RAZORPAY_KEY_SECRET;
+    this.cloudinaryUrl = process.env.CLOUDINARY_URL;
+    this.cloudinaryCloudName = process.env.CLOUDINARY_CLOUD_NAME;
+    this.cloudinaryApiKey = process.env.CLOUDINARY_API_KEY;
+    this.cloudinaryApiSecret = process.env.CLOUDINARY_API_SECRET;
+    this.cloudinaryFolder =
+      process.env.CLOUDINARY_FOLDER || "tushar-store/products";
     this.corsOrigin = process.env.CORS_ORIGIN || "*";
     this.bodyLimit = process.env.BODY_LIMIT || "10mb";
   }
@@ -21,6 +27,18 @@ class Environment {
       if (!this[key]) {
         throw new Error(`Missing required environment variable: ${key}`);
       }
+    }
+
+    const hasCloudinaryUrl = !!this.cloudinaryUrl;
+    const hasCloudinaryKeys =
+      !!this.cloudinaryCloudName &&
+      !!this.cloudinaryApiKey &&
+      !!this.cloudinaryApiSecret;
+
+    if (!hasCloudinaryUrl && !hasCloudinaryKeys) {
+      throw new Error(
+        "Missing Cloudinary configuration. Set CLOUDINARY_URL or CLOUDINARY_CLOUD_NAME/CLOUDINARY_API_KEY/CLOUDINARY_API_SECRET",
+      );
     }
   }
 }

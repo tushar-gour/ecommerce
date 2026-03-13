@@ -242,10 +242,10 @@ const seed = async () => {
 
     console.log(`Seeded ${products.length} products`);
     console.log("Seed accounts:");
-    console.log("  Admin:    admin@store.com / password123");
-    console.log("  Vendor 1: vendor1@store.com / password123");
-    console.log("  Vendor 2: vendor2@store.com / password123");
-    console.log("  Customer: john@test.com / password123");
+    console.log("  Admin:    admin@store.com / thisispassword");
+    console.log("  Vendor 1: vendor1@store.com / thisispassword");
+    console.log("  Vendor 2: vendor2@store.com / thisispassword");
+    console.log("  Customer: john@test.com / thisispassword");
 
     await mongoose.disconnect();
     console.log("Seed complete");

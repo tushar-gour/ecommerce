@@ -40,16 +40,16 @@ class OrderRepository {
     const orders = await OrderModel.find({ "items.vendor": vendorId });
     let totalRevenue = 0;
     let totalOrders = orders.length;
-    let totalItems = 0;
+    let totalItemsSold = 0;
     for (const order of orders) {
       for (const item of order.items) {
         if (item.vendor.toString() === vendorId) {
           totalRevenue += item.price * item.quantity;
-          totalItems += item.quantity;
+          totalItemsSold += item.quantity;
         }
       }
     }
-    return { totalRevenue, totalOrders, totalItems };
+    return { totalRevenue, totalOrders, totalItemsSold };
   }
 }
 

@@ -1,9 +1,45 @@
 import productRepository from "../repositories/product.repository.js";
 import ApiError from "../utils/ApiError.js";
+import cloudinary from "../config/cloudinary.js";
+import env from "../config/env.js";
 
 class ProductService {
+  async uploadImage(input) {
+    const value = String(input || "").trim();
+    if (!value) return null;
+    if (value.includes("res.cloudinary.com")) return value;
+    if (
+      !value.startsWith("http://") &&
+      !value.startsWith("https://") &&
+      !value.startsWith("data:image/")
+    ) {
+      throw ApiError.badRequest("Invalid image format");
+    }
+    const result = await cloudinary.uploader.upload(value, {
+      folder: env.cloudinaryFolder,
+      resource_type: "image",
+    });
+    return result.secure_url;
+  }
+
+  async resolveImages(images = []) {
+    if (!Array.isArray(images) || images.length === 0) {
+      throw ApiError.badRequest("At least one image is required");
+    }
+    const uploaded = await Promise.all(
+      images.map((image) => this.uploadImage(image)),
+    );
+    const cleaned = uploaded.filter(Boolean);
+    if (cleaned.length === 0) {
+      throw ApiError.badRequest("At least one image is required");
+    }
+    return cleaned;
+  }
+
   async create(productData) {
-    return productRepository.create(productData);
+    const payload = { ...productData };
+    payload.images = await this.resolveImages(productData.images);
+    return productRepository.create(payload);
   }
 
   async getAll(query = {}) {
@@ -45,7 +81,11 @@ class ProductService {
   }
 
   async update(id, updateData) {
-    const product = await productRepository.update(id, updateData);
+    const payload = { ...updateData };
+    if (Array.isArray(updateData.images)) {
+      payload.images = await this.resolveImages(updateData.images);
+    }
+    const product = await productRepository.update(id, payload);
     if (!product) throw ApiError.notFound("Product not found");
     return product;
   }
@@ -78,7 +118,11 @@ class ProductService {
     if (product.vendor._id.toString() !== vendorId) {
       throw ApiError.forbidden("Access denied");
     }
-    return productRepository.update(id, updateData);
+    const payload = { ...updateData };
+    if (Array.isArray(updateData.images)) {
+      payload.images = await this.resolveImages(updateData.images);
+    }
+    return productRepository.update(id, payload);
   }
 
   async vendorDelete(id, vendorId) {

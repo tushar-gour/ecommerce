@@ -1,4 +1,5 @@
 import orderRepository from "../repositories/order.repository.js";
+import productRepository from "../repositories/product.repository.js";
 import ProductModel from "../models/product.model.js";
 import ApiError from "../utils/ApiError.js";
 
@@ -71,7 +72,9 @@ class OrderService {
   }
 
   async getVendorStats(vendorId) {
-    return orderRepository.getVendorStats(vendorId);
+    const stats = await orderRepository.getVendorStats(vendorId);
+    const productCount = await productRepository.countByVendor(vendorId);
+    return { ...stats, productCount };
   }
 }
 
